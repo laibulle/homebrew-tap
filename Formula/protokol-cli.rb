@@ -12,7 +12,10 @@ class ProtokolCli < Formula
     system "npm", "install"
     system "npx", "turbo", "build", "--filter=@protokol/cli"
 
-    libexec.install "apps/cli/dist/index.js" => "protokol.js"
+    # Re-bundle with all dependencies inlined into a single file
+    system "npx", "esbuild", "apps/cli/dist/index.js",
+           "--bundle", "--platform=node", "--format=esm",
+           "--outfile=#{libexec}/protokol.js"
 
     (bin/"protokol").write <<~SH
       #!/bin/bash
