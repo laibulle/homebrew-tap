@@ -9,6 +9,7 @@ class ProtokolCli < Formula
   depends_on "node"
 
   def install
+    system "npm", "install"
     system "make", "cli-release"
   end
 
