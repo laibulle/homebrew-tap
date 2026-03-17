@@ -8,5 +8,5 @@ brew install laibulle/tap/protokol-cli
 
 ```bash
 brew update
-brew nstall laibulle/tap/protokol-cli
+brew reinstall laibulle/tap/protokol-cli
 ```

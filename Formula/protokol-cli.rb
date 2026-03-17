@@ -11,6 +11,7 @@ class ProtokolCli < Formula
   def install
     system "npm", "install"
     system "make", "cli-release"
+    bin.install "ptk"
   end
 
   test do
