@@ -4,6 +4,7 @@ class ProtokolCli < Formula
   url "https://github.com/laibulle/protokol/archive/refs/heads/main.tar.gz"
   sha256 "8a97e8740ead071e25009d54d66f339ffebeb4ff3ee185d70962b729f1bbfa31"
   license "MIT"
+  version "0.1.0"
 
   depends_on "node"
 
