@@ -14,6 +14,14 @@ class ProtokolCli < Formula
     bin.install "ptk"
   end
 
+  service do
+    run [bin/"ptk", "wallpaper"]
+    run_type :interval
+    interval 3600
+    log_path var/"log/protokol-cli.log"
+    error_log_path var/"log/protokol-cli.err"
+  end
+
   test do
     system bin/"ptk", "--help"
   end
