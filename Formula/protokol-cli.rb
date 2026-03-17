@@ -2,28 +2,17 @@ class ProtokolCli < Formula
   desc "Command line interface for the Protokol project"
   homepage "https://github.com/laibulle/protokol"
   url "https://github.com/laibulle/protokol/archive/refs/heads/main.tar.gz"
-  sha256 "15858c4e4f429fc227475b1767dad870da7b75b7fec7424e8fdd5f00af66dc21"
+  sha256 "e5ce2c94726b2c55135e3b99f5c2a8b30f02215f1f129615e27e24fa03841521"
   license "MIT"
   version "0.1.0"
 
   depends_on "node"
 
   def install
-    system "npm", "install"
-    system "npx", "turbo", "build", "--filter=@protokol/cli"
-
-    # Re-bundle with all dependencies inlined into a single file
-    system "npx", "esbuild", "apps/cli/dist/index.js",
-           "--bundle", "--platform=node", "--format=esm",
-           "--outfile=#{libexec}/protokol.js"
-
-    (bin/"protokol").write <<~SH
-      #!/bin/bash
-      exec "#{Formula["node"].opt_bin}/node" "#{libexec}/protokol.js" "$@"
-    SH
+    system "make", "cli-release"
   end
 
   test do
-    system bin/"protokol", "--help"
+    system bin/"ptk", "--help"
   end
 end
