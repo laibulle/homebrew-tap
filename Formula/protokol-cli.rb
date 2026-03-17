@@ -12,12 +12,12 @@ class ProtokolCli < Formula
     system "npm", "install"
     system "npx", "turbo", "build", "--filter=@protokol/cli"
 
-    cd "apps/cli" do
-      system "npm", "pack"
-      system "npm", "install", "-g", "--prefix", libexec, "protokol-cli-#{version}.tgz"
-    end
+    libexec.install "apps/cli/dist/index.js" => "protokol.js"
 
-    bin.install_symlink Dir["#{libexec}/bin/*"]
+    (bin/"protokol").write <<~SH
+      #!/bin/bash
+      exec "#{Formula["node"].opt_bin}/node" "#{libexec}/protokol.js" "$@"
+    SH
   end
 
   test do
