@@ -2,7 +2,7 @@ class ProtokolCli < Formula
   desc "Command line interface for the Protokol project"
   homepage "https://github.com/laibulle/protokol"
   url "https://github.com/laibulle/protokol/archive/refs/heads/main.tar.gz"
-  sha256 "330302817b3da0042b7632831ac05b0e2580310b7311c979ac84e2926773074d"
+  sha256 "b466e3626267185c58ed3c679b46fed06ba77d602ec0e3e676ddc0478f1f3744"
   license "MIT"
   version "0.1.0"
 
